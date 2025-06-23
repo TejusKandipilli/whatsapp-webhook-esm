@@ -3,7 +3,6 @@ import {
   sendHelloCat,
   sendCustomCat,
   sendRandomCat,
-  sendCatWithFilter,
   sendCatGif,
 } from "../controllers/sendImage.controller.js";
 
