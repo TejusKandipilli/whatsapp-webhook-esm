@@ -10,7 +10,7 @@ const VERIFY_TOKEN = 'Biriyani'; // must match what you put in Meta's dashboard
 app.use(bodyParser.json());
 app.use(express.json())
 app.use('/image',sendImage)
-router.post('/sendTemplate/:number', sendTemplate);
+app.post('/sendTemplate/:number', sendTemplate);
 
 /**
  * Webhook verification endpoint (GET)
