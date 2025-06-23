@@ -1,10 +1,27 @@
-import Router from "express"
-import { sendHelloCat } from "../controllers/sendImage.controller.js"
+import Router from "express";
+import {
+  sendHelloCat,
+  sendCustomCat,
+  sendRandomCat,
+  sendCatWithFilter,
+  sendCatGif,
+} from "../controllers/sendImage.controller.js";
 
-const router = Router()
+const router = Router();
 
-router.post('/sendHello/:number',sendHelloCat)
+// Send basic "hello" cat
+router.post('/sendHello/:number', sendHelloCat);
 
+// Send cat with custom text
+router.post('/sendCustom/:number/:text', sendCustomCat);
 
+// Send random cat with no text
+router.post('/sendRandom/:number', sendRandomCat);
 
-export default router
+// Send cat with filter (grayscale, blur, sepia)
+router.post('/sendFilter/:number/:filter', sendCatWithFilter);
+
+// Send a random cat GIF
+router.post('/sendGif/:number', sendCatGif);
+
+export default router;
