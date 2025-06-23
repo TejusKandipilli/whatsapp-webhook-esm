@@ -1,30 +1,31 @@
-import axios from 'axios';
-import dotenv from 'dotenv';
+import axios from "axios";
+import dotenv from "dotenv";
 dotenv.config();
 
-export async function sendTemplate(req, res) {
+export async function sendGetStartedCat(req, res) {
   const phoneNumber = req.params.number;
-  const name = req.query.name || 'there';
 
   try {
     const response = await axios.post(
       `https://graph.facebook.com/${process.env.Version}/${process.env.PhoneNumberID}/messages`,
       {
-        messaging_product: 'whatsapp',
+        messaging_product: "whatsapp",
         to: phoneNumber,
-        type: 'template',
+        type: "template",
         template: {
-          name: 'get_started', // your approved template name
+          name: "get_started", 
           language: {
-            code: 'en'
+            code: "en"
           },
           components: [
             {
-              type: 'body',
+              type: "header",
               parameters: [
                 {
-                  type: 'text',
-                  text: name // This replaces {{1}} in the template
+                  type: "image",
+                  image: {
+                    link: "https://cataas.com/cat/says/Ayya%20Namaskaaram?fontSize=40&color=white&unique=" + Date.now()
+                  }
                 }
               ]
             }
@@ -34,16 +35,16 @@ export async function sendTemplate(req, res) {
       {
         headers: {
           Authorization: `Bearer ${process.env.AUTH_TOKEN}`,
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
         }
       }
     );
 
-    console.log('✅ Template message sent:', response.data);
+    console.log("✅ 'get_started' template sent:", response.data);
     res.status(200).json({ success: true, data: response.data });
 
-  } catch (error) {
-    console.error('❌ Failed to send template:', error.response?.data || error.message);
-    res.status(500).json({ success: false, error: error.response?.data || error.message });
+  } catch (err) {
+    console.error("❌ Failed to send:", err.response?.data || err.message);
+    res.status(500).json({ success: false, error: err.response?.data || err.message });
   }
 }
