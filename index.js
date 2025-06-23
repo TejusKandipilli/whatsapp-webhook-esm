@@ -2,8 +2,10 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import sendImage from "./routes/sendImage.js" 
 import { sendTemplate } from './controllers/user.controller.js';
+
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; // 👈 FIXED for Render
+
 
 const VERIFY_TOKEN = 'Biriyani'; // must match what you put in Meta's dashboard
 
