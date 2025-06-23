@@ -5,8 +5,13 @@ dotenv.config();
 export async function sendHelloCat(req, res) {
   try {
     const phoneNumber = req.params.number;
-    
 
+    // 🔄 Step 1: Get a unique cat image ID with text
+    const catRes = await axios.get('https://cataas.com/cat/says/hello?json=true');
+    const catId = catRes.data._id;
+    const catImageUrl = `https://cataas.com/cat/${catId}`;
+
+    // 📨 Step 2: Send the image to WhatsApp
     const response = await axios.post(
       `https://graph.facebook.com/${process.env.Version}/${process.env.PhoneNumberID}/messages`,
       {
@@ -14,7 +19,7 @@ export async function sendHelloCat(req, res) {
         to: phoneNumber,
         type: 'image',
         image: {
-          link: "https://cataas.com/cat/says/hello",
+          link: catImageUrl,
         },
       },
       {
