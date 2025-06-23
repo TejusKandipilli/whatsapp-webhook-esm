@@ -16,7 +16,7 @@ export async function sendTemplate(req, res) {
         template: {
           name: 'get_started', // your approved template name
           language: {
-            code: 'en_US'
+            code: 'en'
           },
           components: [
             {
