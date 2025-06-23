@@ -2,7 +2,7 @@ import axios from "axios";
 import dotenv from "dotenv";
 dotenv.config();
 
-export async function sendGetStartedCat(req, res) {
+export async function sendTemplate(req, res) {
   const phoneNumber = req.params.number;
 
   try {
