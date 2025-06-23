@@ -6,12 +6,10 @@ export async function sendHelloCat(req, res) {
   try {
     const phoneNumber = req.params.number;
 
-    // 🔄 Step 1: Get a unique cat image ID with text
-    const catRes = await axios.get('https://cataas.com/cat/says/hello?json=true');
-    const catId = catRes.data._id;
-    const catImageUrl = `https://cataas.com/cat/${catId}`;
+    // Add random string to force unique image each time
+    const uniqueParam = Math.random().toString(36).substring(7);
+    const catImageUrl = `https://cataas.com/cat/says/hello?unique=${uniqueParam}`;
 
-    // 📨 Step 2: Send the image to WhatsApp
     const response = await axios.post(
       `https://graph.facebook.com/${process.env.Version}/${process.env.PhoneNumberID}/messages`,
       {
