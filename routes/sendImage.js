@@ -18,8 +18,6 @@ router.post('/sendCustom/:number/:text', sendCustomCat);
 // Send random cat with no text
 router.post('/sendRandom/:number', sendRandomCat);
 
-// Send cat with filter (grayscale, blur, sepia)
-router.post('/sendFilter/:number/:filter', sendCatWithFilter);
 
 // Send a random cat GIF
 router.post('/sendGif/:number', sendCatGif);

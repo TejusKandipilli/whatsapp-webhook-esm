@@ -60,16 +60,7 @@ export async function sendRandomCat(req, res) {
   await sendCatImage(phoneNumber, url, res);
 }
 
-// 🔹 4. Cat with Filter (mono, sepia, blur, etc.)
-export async function sendCatWithFilter(req, res) {
-  const phoneNumber = req.params.number;
-  const filter = req.params.filter;
-  const rand = Math.random().toString(36).substring(7);
-  const url = `https://cataas.com/cat/says/Hi?filter=${filter}&unique=${rand}`;
-  await sendCatImage(phoneNumber, url, res);
-}
-
-// 🔹 5. Cat GIF
+// 🔹 4. Cat GIF
 export async function sendCatGif(req, res) {
   const phoneNumber = req.params.number;
   const rand = Math.random().toString(36).substring(7);
