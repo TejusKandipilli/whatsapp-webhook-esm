@@ -1,4 +1,3 @@
-import { getCat } from "../lib/getCat.js";
 import axios from "axios";
 import dotenv from "dotenv";
 dotenv.config();
@@ -15,7 +14,7 @@ export async function sendHelloCat(req, res) {
         to: phoneNumber,
         type: 'image',
         image: {
-          link: catImage,
+          link: "https://cataas.com/cat/says/hello",
         },
       },
       {
