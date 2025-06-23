@@ -5,7 +5,7 @@ dotenv.config();
 export async function sendHelloCat(req, res) {
   try {
     const phoneNumber = req.params.number;
-    const catImage = await getCat(); // Make sure this returns a valid image URL
+    
 
     const response = await axios.post(
       `https://graph.facebook.com/${process.env.Version}/${process.env.PhoneNumberID}/messages`,
